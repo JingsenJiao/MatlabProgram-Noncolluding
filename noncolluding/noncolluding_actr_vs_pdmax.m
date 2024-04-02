@@ -11,8 +11,8 @@ R_c = 0.1;       % Mbps
 R_d = 0.1;       % Mbps
 
 epsilon = 0.05;   % 隐蔽性约束
-% M = 20*10^2;        % 仿真实验次数
-M = 2*10^4;
+
+M = 2*10^4;         % 仿真实验次数
 
 
 %% case 1
@@ -28,7 +28,6 @@ for idx = 1:numel(P_dmax_array)
     PR_co = 1 - exp(-b)*(log(1+B))/(B);
     PR_do = 1 - exp(-a*A) + A*(a+1)*expint(a*A) - A*exp(a)*expint(a*(A+1));
     t = (lambda*dbm2w(P_dmax)) / (lambda*dbm2w(P_c));
-%     AMDEP = (t/(t+1))^K - (K*t^(2*K))/((K+1)*(t+1)^K) * hypergeom([K+1,K+1],K+2,-t);
     AMDEP = (t/(t+1))^K - (K*t^K)/(K+1) * hypergeom([K+1,K+1],K+2,-t);
     if AMDEP >= (1-epsilon)
         actr_theo_array_1(idx) = R_c * (1-PR_co) * (1-PR_do);
@@ -120,7 +119,6 @@ for idx = 1:numel(P_dmax_array)
     PR_co = 1 - exp(-b)*(log(1+B))/(B);
     PR_do = 1 - exp(-a*A) + A*(a+1)*expint(a*A) - A*exp(a)*expint(a*(A+1));
     t = (lambda*dbm2w(P_dmax)) / (lambda*dbm2w(P_c));
-%     AMDEP = (t/(t+1))^K - (K*t^(2*K))/((K+1)*(t+1)^K) * hypergeom([K+1,K+1],K+2,-t);
     AMDEP = (t/(t+1))^K - (K*t^K)/(K+1) * hypergeom([K+1,K+1],K+2,-t);
     if AMDEP >= (1-epsilon)
         actr_theo_array_2(idx) = R_c * (1-PR_co) * (1-PR_do);
@@ -201,10 +199,6 @@ grid on;
 set(gca,'FontName','Times New Roman');      % 设置坐标轴字体
 xlabel('Maximum transmit power of DT, $P_d^{\mathrm{max}}$ (dBm)','Interpreter','latex','FontName','Times New Roman','FontSize',12);
 ylabel('Average covert rate (Mbps)','Interpreter','latex','FontName','Times New Roman','FontSize',12);
-% handle = legend("$R_c$="+num2str(R_c)+" Mbps, "+"$R_d$="+num2str(R_d)+" Mbps, $P_c$=5 dBm, Theory", ...
-%                 "$R_c$="+num2str(R_c)+" Mbps, "+"$R_d$="+num2str(R_d)+" Mbps, $P_c$=5 dBm, Simulation", ...
-%                 "$R_c$="+num2str(R_c)+" Mbps, "+"$R_d$="+num2str(R_d)+" Mbps, $P_c$=10 dBm, Theory", ...
-%                 "$R_c$="+num2str(R_c)+" Mbps, "+"$R_d$="+num2str(R_d)+" Mbps, $P_c$=10 dBm, Simulation");
 handle = legend("$P_c$=5 dBm, Theory", ...
                 "$P_c$=5 dBm, Simulation", ...
                 "$P_c$=10 dBm, Theory", ...

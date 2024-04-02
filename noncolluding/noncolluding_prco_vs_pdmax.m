@@ -124,7 +124,7 @@ plot(P_dmax_array, PR_co_simu_array3, 'g^', 'LineWidth',1.0);
 %%
 grid on;
 set(gca,'FontName','Times New Roman');      % …Ë÷√◊¯±Í÷·◊÷ÃÂ
-xlabel('Maximum transmit power of $\mathrm{DUE}_t$, $P_d^{\mathrm{max}}$ (dBm)','Interpreter','latex','FontName','Times New Roman','FontSize',12);
+xlabel('Maximum transmit power of DT, $P_d^{\mathrm{max}}$ (dBm)','Interpreter','latex','FontName','Times New Roman','FontSize',12);
 ylabel('Connection outage probability of cellular link','Interpreter','latex','FontName','Times New Roman','FontSize',12);
 handle = legend('$R_c$=0.1 Mbps, Theory','$R_c$=0.1 Mbps, Simulation', ...
     '$R_c$=0.5 Mbps, Theory','$R_c$=0.5 Mbps, Simulation', ...
